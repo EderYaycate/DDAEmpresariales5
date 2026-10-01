@@ -1,0 +1,13 @@
+{% extends 'movies/base.html' %}
+{% block title %}Géneros{% endblock %}
+{% block content %}
+<h1>Géneros</h1>
+<ul>
+  {% for genre in genres %}
+    <li><a href="{% url 'movies:recommendations' genre.id %}">{{ genre.name }}</a> ({{ genre.total }} películas)</li>
+  {% empty %}
+    <li>No hay géneros registrados.</li>
+  {% endfor %}
+</ul>
+<p><a href="/admin/">Ir al panel de administración</a></p>
+{% endblock %}

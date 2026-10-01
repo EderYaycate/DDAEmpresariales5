@@ -1,0 +1,13 @@
+{% extends 'movies/base.html' %}
+{% block title %}Recomendaciones: {{ genre.name }}{% endblock %}
+{% block content %}
+<h1>Mejor valoradas en {{ genre.name }}</h1>
+<ol>
+  {% for movie in movies %}
+    <li><strong>{{ movie.title }}</strong> ({{ movie.year }}) — {{ movie.avg_score|floatformat:1 }}/10 en {{ movie.total_ratings }} valoraciones</li>
+  {% empty %}
+    <li>Aún no hay películas valoradas en este género.</li>
+  {% endfor %}
+</ol>
+<p><a href="{% url 'movies:genre_list' %}">&larr; Volver a géneros</a></p>
+{% endblock %}
